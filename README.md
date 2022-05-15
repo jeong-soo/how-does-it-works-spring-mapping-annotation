@@ -1,1 +1,1 @@
-# how-does-it-works-spring-mapping-annotation
+# 스프링 RequestMapping 어노테이션이 부모클레스나 인터페이스에 있으면 어떤 방법으로 동작할까요?
