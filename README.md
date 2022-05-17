@@ -1,4 +1,4 @@
-# 스프링 RequestMapping 어노테이션 상속에 따른 우선순위?
+# 스프링 RequestMapping 어노테이션 상속에 따른 우선순위 확인
 
 
 ```java
@@ -52,8 +52,7 @@ public class ExtendController extends RequestMappingSuperClass {
 ```
 /super-controller/hello 유효
 
-위와 같이 어노테이션을 적용한 클래스나 인터페이스를 상속받는 경우에는, 
-컴파일러가 경고하지 않으니 휴먼에러에 주의를 해야합니다.
+RequestMapping과 같이 어노테이션에 value가 있는 경우 extends, implements 주의 필요 
 <br>
 <br>
 <br> 
