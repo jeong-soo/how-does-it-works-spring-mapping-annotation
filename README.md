@@ -1,9 +1,6 @@
-# 스프링 RequestMapping 어노테이션이 부모 클레스 및 인터페이스에 있을 때 어떤 어노테이션이 적용될까요?
+# 스프링 RequestMapping 어노테이션 상속에 따른 우선순위?
 
-이런 생각 해본 적 없으신가요? <br>
-스프링 RequestMapping 어노테이션이 상속받는 부모 클레스나 인터페이스에 있으면 어떻게 동작하지?
 
-아래와 같은 코드가 있을 때 어떤 어노테이션이 유효할까요?
 ```java
 @RestController
 @RequestMapping("/controller")
@@ -23,12 +20,12 @@ public interface MyInterface extends SuperInterface { }
 @RequestMapping("super-interface")
 public interface SuperInterface { }
 ```
-결과는 /controller/hello 만 유효했습니다.
+/controller/hello 유효
 
 <br>
 <br>
 
-그러면 Controller에 @RequestMapping 어노테이션을 제거하면 어떤 어노테이션이 작동할까요?
+Controller에 @RequestMapping 어노테이션을 제거 후
 ```java
 @RestController
 public class ExtendImplController extends RequestMappingSuperClass implements MyInterface{
@@ -38,12 +35,12 @@ public class ExtendImplController extends RequestMappingSuperClass implements My
     }
 }
 ```
-결과는 /super-interface/hello가 유효했습니다.
+/super-interface/hello 유효
 
 <br>
 <br>
 
-상속만 진행한 경우에는
+implements 없이 상속만 진행한 경우에는
 ```java
 @RestController
 public class ExtendController extends RequestMappingSuperClass {
@@ -53,7 +50,7 @@ public class ExtendController extends RequestMappingSuperClass {
     }
 }
 ```
-/super-controller/hello 로 정상적으로 호출이 가능했습니다.
+/super-controller/hello 유효
 
 위와 같이 어노테이션을 적용한 클래스나 인터페이스를 상속받는 경우에는, 
 컴파일러가 경고하지 않으니 휴먼에러에 주의를 해야합니다.
